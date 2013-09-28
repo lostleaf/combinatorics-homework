@@ -1,0 +1,112 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article}
+\usepackage{amssymb,amsthm}
+\usepackage{amsmath,amssymb,CJK}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{listings}
+\usepackage{enumerate}
+
+\openup 7pt\pagestyle{plain} \topmargin -40pt \textwidth
+14.5cm\textheight 21.5cm
+\parskip .09 truein
+\baselineskip 4pt\lineskip 4pt \setcounter{page}{1}
+\def\a{\alpha}\def\b{\beta}\def\d{\delta}\def\D{\Delta}\def\fs{\footnotesize}
+\def\g{\gamma}
+\def\G{\Gamma}\def\l{\lambda}\def\L{\Lambda}\def\o{\omiga}\def\p{\psi}
+\def\se{\subseteq}\def\seq{\subseteq}\def\Si{\Sigma}\def\si{\sigma}\def\vp{\varphi}\def\es{\varepsilon}
+\def\sc{\scriptstyle}\def\ssc{\scriptscriptstyle}\def\dis{\displaystyle}
+\def\cl{\centerline}\def\ll{\leftline}\def\rl{\rightline}\def\nl{\newline}
+\def\ol{\overline}\def\ul{\underline}\def\wt{\widetilde}\def\wh{\widehat}
+\def\rar{\rightarrow}\def\Rar{\Rightarrow}\def\lar{\leftarrow}
+\def\Lar{\Leftarrow}\def\Rla{\rightleftarrow}\def\bs{\backslash}
+\def\ra{\rangle}\def\la{\langle}\def\hs{\hspace*}\def\rb{\raisebox}
+\def\ni{\noindent}\def\hi{\hangindent}\def\ha{\hangafter}
+\def\vs{\vspace*}
+\def\hom#1{\mbox{\rm Hom($#1,#1$)}}
+\def\thebeg{\vskip8pt\par\ni}
+\def\theend{\vskip5pt\par}
+\def\chabeg{\pagebreak\par}
+\def\chaend{\vskip20pt\par}
+\def\secbeg{\vskip15pt\par}
+\def\secend{\vskip10pt\par}
+\def\exebeg{\vskip10pt}
+\def\exeend{\vskip6pt}
+\def\undot#1{\mbox{$\mbox{#1}\hs{-1.5ex}_{_{\dis\centerdot}}\,\,$}}
+\def\qed{\hfill\mbox{$\Box$}}
+\def\C{\mathbb{C}}
+\def\Q{\mathbb{Q}}
+\def\ii{\mbox{\,{\bf i}\,}}
+\def\jj{\mbox{\,{\bf j}\,}}
+\def\AA{{\cal A}}
+\def\BB{{\cal B}}
+\def\DD{{\cal D}}
+\def\EE{{\mbox{\bf 1}}}
+\def\OO{{\mbox{\bf 0}}}
+\def\kk{{\mbox{\bf k}}}
+\def\R{\mathbb{R}}
+\def\F{\mathbb{F}{\ssc\,}}
+%\def\similar{\rb{-4pt}{\mbox{\,\~\,}}}
+\def\similar{\backsim}
+\def\Llra{\Longleftrightarrow}
+\def\Lra{\Longrightarrow}
+\def\Lla{\Longleftarrow}
+\def\mat#1#2{\mbox{$\left(\begin{array}{#1}#2\end{array}\right)$}}
+\def\det#1#2{\mbox{$\left|\begin{array}{#1}#2\end{array}\right|$}}
+\def\eset{\emptyset}
+\parindent=5ex
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newtheorem{Example}{\text{例}}
+\begin{CJK*}{UTF8}{gbsn}
+
+\date{}
+\title{Homework 1}
+\author{Qinglin Li, 5110309074}
+\begin{document}
+\maketitle
+\section*{Problem 1}
+\begin{enumerate}
+\item
+$\binom{10}{8}=\binom{10}{2}=\frac{10\times9}{2\times1}=45$
+\item
+$1^{-1}=1\mod{7}$\\
+$2^{-1}=4\mod{7}$\\
+$3^{-1}=5\mod{7}$\\
+$4^{-1}=2\mod{7}$\\
+$5^{-1}=3\mod{7}$\\
+$6^{-1}=6\mod{7}$
+\item
+$449=2^0+2^6+2^7+2^8=4\times5^0+4\times5^1+2\times5^2+3\times5^3$\\
+$137=2^0+2^3+2^7=2\times5^0+2\times5^1+1\times5^3$\\
+$\binom{449}{137}=\binom{1}{1}\binom{0}{1}\binom{1}{0}\binom{1}{1}\binom{1}{0}=0\mod{2}$\\
+$\binom{449}{137}=\binom{4}{2}\binom{4}{2}\binom{2}{0}\binom{3}{1}=3 \mod{5}$\\
+
+By Chinese Remainder Theorem\\
+$\binom{449}{137}=8 \mod10$
+\end{enumerate}
+
+\section*{Problem 2}
+Firstly, choose $k(0\leq k \leq n)$ elements from $[n]$ as $A$. And then the remained $n-k$ elements can be either in $B$ or not.\\
+$$\# \text{oredered pairs} = \sum_{k=0}^n \binom{n}{k}\cdot2^{n-k}=(1+2)^n=3^n$$
+
+\section*{Problem 3}
+For any $9\times9$ array, consider generating it by filling 1 to 81 into the units one by one.\\
+Suppose every line or every column is filled for the first time after the number $k$ is filled.\\
+WLOG, suppose every line is filled.\\
+Because not all columns are filled before $k$ is filled, there must be at least one blank in all rows after $k$ is filled. In other word, there must be at least $9$ blanks adjacent to filled units.\\
+Then the maxmium number filled into these blanks must be at least $k+9$ because $1$ to $k$ are used.\\
+So the difference is at least $(k+9)-k=9$
+
+\section*{Problem 4}
+Suppose $\exists a, \exists b\neq c$, $\overline{ab}=\overline{ac}$, clearly $abc$ is a fun triple.\\
+$\forall d\neq a,b,c$, either both $abd$ and $acd$ are fun triples, or none of $abd$ and $acd$ is fun triple.\\
+Since the number of fun triples in $\{a,b,c,d\}$ is even, $bcd$ must be a fun triple.\\
+So $\overline{bc}$ is of size $n$.\\
+
+Otherwise $\forall a, \forall b\neq c, \overline{ab}\neq\overline{ac}$\\
+Then there must exist a club $C$ such that $\exists a \not\in C$\\
+For other people $b_1,b_2,\cdots,b_{n-1}, \forall i\neq j, \overline{ab_i}\neq \overline{ab_j}$\\
+So $n$ clubs $\overline{ab_1},\cdots,\overline{ab_{n-1}},C$ are different.
+\end{CJK*}
+\end{document}
