@@ -1,0 +1,114 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article}
+\usepackage{amssymb,amsthm}
+\usepackage{amsmath,amssymb,CJK}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{listings}
+\usepackage{enumerate}
+ 
+\openup 7pt\pagestyle{plain} \topmargin -40pt \textwidth
+14.5cm\textheight 21.5cm
+\parskip .09 truein
+\baselineskip 4pt\lineskip 4pt \setcounter{page}{1}
+\def\a{\alpha}\def\b{\beta}\def\d{\delta}\def\D{\Delta}\def\fs{\footnotesize}
+\def\g{\gamma}
+\def\G{\Gamma}\def\l{\lambda}\def\L{\Lambda}\def\o{\omiga}\def\p{\psi}
+\def\se{\subseteq}\def\seq{\subseteq}\def\Si{\Sigma}\def\si{\sigma}\def\vp{\varphi}\def\es{\varepsilon}
+\def\sc{\scriptstyle}\def\ssc{\scriptscriptstyle}\def\dis{\displaystyle}
+\def\cl{\centerline}\def\ll{\leftline}\def\rl{\rightline}\def\nl{\newline}
+\def\ol{\overline}\def\ul{\underline}\def\wt{\widetilde}\def\wh{\widehat}
+\def\rar{\rightarrow}\def\Rar{\Rightarrow}\def\lar{\leftarrow}
+\def\Lar{\Leftarrow}\def\Rla{\rightleftarrow}\def\bs{\backslash}
+\def\ra{\rangle}\def\la{\langle}\def\hs{\hspace*}\def\rb{\raisebox}
+\def\ni{\noindent}\def\hi{\hangindent}\def\ha{\hangafter}
+\def\vs{\vspace*}
+\def\hom#1{\mbox{\rm Hom($#1,#1$)}}
+\def\thebeg{\vskip8pt\par\ni}
+\def\theend{\vskip5pt\par}
+\def\chabeg{\pagebreak\par}
+\def\chaend{\vskip20pt\par}
+\def\secbeg{\vskip15pt\par}
+\def\secend{\vskip10pt\par}
+\def\exebeg{\vskip10pt}
+\def\exeend{\vskip6pt}
+\def\undot#1{\mbox{$\mbox{#1}\hs{-1.5ex}_{_{\dis\centerdot}}\,\,$}}
+\def\qed{\hfill\mbox{$\Box$}}
+\def\C{\mathbb{C}}
+\def\Q{\mathbb{Q}}
+\def\ii{\mbox{\,{\bf i}\,}}
+\def\jj{\mbox{\,{\bf j}\,}}
+\def\AA{{\cal A}}
+\def\BB{{\cal B}}
+\def\DD{{\cal D}}
+\def\EE{{\mbox{\bf 1}}}
+\def\OO{{\mbox{\bf 0}}}
+\def\kk{{\mbox{\bf k}}}
+\def\R{\mathbb{R}}
+\def\F{\mathbb{F}{\ssc\,}}
+%\def\similar{\rb{-4pt}{\mbox{\,\~\,}}}
+\def\similar{\backsim}
+\def\Llra{\Longleftrightarrow}
+\def\Lra{\Longrightarrow}
+\def\Lla{\Longleftarrow}
+\def\mat#1#2{\mbox{$\left(\begin{array}{#1}#2\end{array}\right)$}}
+\def\det#1#2{\mbox{$\left|\begin{array}{#1}#2\end{array}\right|$}}
+\def\eset{\emptyset}
+\parindent=5ex
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newtheorem{Example}{\text{例}}
+\begin{CJK*}{UTF8}{gbsn}
+ 
+\date{}
+\title{Homework3}
+\author{Qinglin Li, 5110309074}
+\begin{document}
+\maketitle
+\section*{Problem 1}
+$\forall a\nmid b, \mu(a,b)=0$\\
+$\forall a\mid b, \mu(a,b)=\mu(1,\frac{b}{a})$\\
+$\mu(a,b)=-1\Longleftrightarrow \frac{b}{a}$ is the product of odd number of distinct prime numbers\\
+Calculated by MATLAB, there are $179$ pairs\\
+So the probability is $\frac{179}{10000}$
+\qed
+\section*{Problem 2}
+$s(n,k)=(-1)^{n-k}c(n,k)\Rightarrow$ $s(n,k)$ is even iff $c(n,k)$ is even\\
+By induction.
+\begin{enumerate}
+\item
+$n=1,k=0, c(n,k)=0$ is even
+\item
+Suppose $\forall n'<n, 2k'<n', c(n',k')$ is even\\
+$c(n,k)=(n-1)c(n-1,k)+c(n-1,k-1)$\\
+If $n$ is even, $2k<n\Rightarrow 2k<n-1$. $c(n,k)$ is even by hypothesis.\\
+If $n$ is odd, $n-1$ is even and $2k<n\Rightarrow 2(k-1)<n-1$, $c(n,k)$ is even\\
+\end{enumerate}
+So $s(n,k)$ is even
+\qed
+\section*{Problem 3}
+$T$ is the coefficient of $x^{50}$ in $x(x-1)\cdots(x-99)$\\
+So
+$$T=\displaystyle\sum_{X\in\binom{[99]}{50}}\prod_{x\in X}-x$$
+If a multiple is in $X$, $\prod_{x\in X} -x = 0$\\
+Since there are $33$ numbers equals $1$ mod $3$ and $33$ numbers equals 2 mod $3$\\
+$$T=\sum_{i=0}^{33}\binom{33}{i}\binom{33}{50-i}2^i=\sum_{i=17}^{25}\binom{33}{i}\binom{33}{50-i}2^i+\sum_{i=17}^{24}\binom{33}{i}\binom{33}{50-i}2^{50-i}\mod 3$$
+By calculating, it is found that $17\leq i\leq 25,\binom{33}{i}=0\mod 3$\\
+Thus $T=0\mod 3$
+\section*{Problem 4}
+Let $S=\{p|p\text{ is a permutation of } [2n]\}$\\
+Let $S_i=\{p|p \text{ is a permutation of } [2n] \text{ and }x_i+x_{i+1}=2n+1\}$\\
+$S_i\cap S_{i+1}=\emptyset$ because each element can appear only once\\
+There are $\binom{2n-i}{i}$ ways not to choose $i$ sets consecutively\\
+\begin{align*}
+|S-\cup_{i=0}^{i\leq 2n-1}S_i|=\sum_{i=1}^n(-1)^i\sum_{X\in\binom{[2n-1]}{i}}|\cap_{j\in X}S_j|=
+\sum_{i=0}^n(-1)^i\binom{2n-i}{i}\binom{n}{k}(2n-2k)!k!2^k
+\end{align*}
+\section*{Problem 5}
+The coefficient of $x^{n-k}$ is $\sum_{t_1+\cdots+t_k=n-k}\prod_{i=1}^{k}i^{t_i}$\\
+Consider a process of inserting $1$ to $n$ into $k$ sets $S_1\cdots S_k$ in $k$ rounds\\
+Initially, all sets are empty\\
+In round $i$, insert $t_i+1$ numbers. The first number is inserted into $S_i$. And the other $t_i$ numbers can be inserted into any of $S_1\cdots S_i$. So there are $i^{t_i}$ ways to insert them\\
+Thus, $\sum_{t_1+\cdots+t_k=n-k}\prod_{i=1}^{k}i^{t_i}=S(n,k)$
+\end{CJK*}
+\end{document}
